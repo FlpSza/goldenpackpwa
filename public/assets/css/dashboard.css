@@ -25,3 +25,93 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* Top Header */
+#top-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10; /* Acima do menu lateral */
+}
+
+#empresaSelect {
+    max-width: 90%; /* Ajuste a largura máxima conforme necessário */
+    width: 90%; /* Garante que o select ocupe toda a largura disponível */
+    margin: 0 auto; /* Centraliza o select horizontalmente */
+}
+
+.sidebar-heading {
+    padding-bottom: 3rem;
+    color: black;
+}
+
+/* Contêiner do menu e botão */
+#wrapper {
+    display: flex;
+    transition: margin-left 0.3s ease; /* Transição suave para o conteúdo da página */
+}
+
+/* Menu lateral */
+#sidebar-wrapper {
+    width: 250px;
+    background-color: #343a40;
+    color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Inicialmente oculta fora da tela */
+    transition: left 0.3s ease; /* Transição suave para o menu */
+    z-index: 1000; /* Garante que o menu esteja acima do conteúdo */
+}
+
+/* Botão de menu */
+#menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px; /* Posição inicial do botão */
+    z-index: 1050; /* Garante que o botão esteja acima do menu lateral */
+    transition: left 0.3s ease, opacity 0.3s ease; /* Transição suave para o botão */
+}
+
+/* Estilos quando o menu está visível */
+#sidebar-wrapper.show {
+    left: 0; /* Move o menu para dentro da tela */
+}
+
+#menu-toggle.show {
+    left: 250px; /* Move o botão junto com o menu */
+}
+
+/* Oculta o botão quando o menu está visível */
+#sidebar-wrapper.show ~ #menu-toggle {
+    opacity: 0; /* Torna o botão invisível */
+    pointer-events: none; /* Desativa eventos de clique no botão */
+}
+
+/* Conteúdo da página */
+#page-content-wrapper {
+    flex: 1;
+    margin-left: 0; /* Remove a margem quando o menu está oculto */
+}
+
+/* Remove a borda inferior dos itens da lista */
+#sidebar-wrapper .list-group-item {
+    border-bottom: none; /* Remove a borda inferior */
+    padding: 0.75rem 1.25rem; /* Ajuste o padding conforme necessário */
+}
+
+#wrapper ul {
+    margin-top: 2rem;
+}
+
+/* Estilo da sobreposição */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    display: none; /* Inicialmente oculto */
+    z-index: 900; /* Abaixo do menu lateral */
+}
