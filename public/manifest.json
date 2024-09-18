@@ -1,0 +1,25 @@
+{
+    "name": "Golden Pack",
+    "short_name": "Golden_Pack",
+    "description": "Um PWA para gestão de empresas e pedidos.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#333333",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/assets/images/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "scope": "/",
+    "lang": "pt-BR"
+  }
+  
