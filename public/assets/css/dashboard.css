@@ -51,6 +51,15 @@ footer {
     transition: margin-left 0.3s ease; /* Transição suave para o conteúdo da página */
 }
 
+#wrapper hr {
+    border: none; /* Remove a borda padrão do hr */
+    border-top: 2px solid black; /* Adiciona uma linha sólida preta com 2px de espessura */
+    width: 100%; /* Define a largura da linha */
+    margin: 1rem auto; /* Centraliza a linha horizontalmente e adiciona margem superior e inferior */
+    background-color: white;
+}
+
+
 /* Menu lateral */
 #sidebar-wrapper {
     width: 250px;
@@ -114,4 +123,30 @@ footer {
     background: rgba(0, 0, 0, 0.5); /* Semi-transparente */
     display: none; /* Inicialmente oculto */
     z-index: 900; /* Abaixo do menu lateral */
+}
+
+/* Estilos adicionais para os ícones da sidebar */
+#sidebar-wrapper .list-group-item {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    padding: 0.75rem 1.25rem; /* Ajuste o padding conforme necessário */
+}
+
+#sidebar-wrapper .list-group-item i {
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+    font-size: 1.2rem; /* Tamanho dos ícones */
+}
+
+/* Ajuste o link para que o texto e o ícone fiquem alinhados */
+#sidebar-wrapper .list-group-item a {
+    color: black; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    display: flex; /* Utiliza o display flex para alinhamento */
+    align-items: center; /* Alinha o texto e ícone verticalmente */
+    width: 100%; /* Faz o link ocupar a largura total do item */
+}
+
+/* Mantenha a cor do link consistente com o restante do item da lista */
+#sidebar-wrapper .list-group-item a:hover {
+    color: black; /* Cor do texto ao passar o mouse */
 }
