@@ -92,19 +92,18 @@ app.get('/dashboard', (req, res) => {
 });
 
 // Rota para servir a página de pedidos
-app.get('/pedidos',  (req, res) => {
+app.get('/pedidos', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/pages', 'pedidos.html'));
 });
 
-// Rota para servir a página de rascunhos
-app.get('/rascunhos',  (req, res) => {
+app.get('/rascunhos', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/pages', 'rascunhos.html'));
 });
 
-// Rota para servir a página de clientes
-app.get('/clientes',  (req, res) => {
+app.get('/clientes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/pages', 'clientes.html'));
 });
+
 
 // Rota para servir a página de produtos
 app.get('/produtos',  (req, res) => {

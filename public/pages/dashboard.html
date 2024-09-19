@@ -36,8 +36,8 @@
                 <li class="list-group-item"><i class="fas fa-chart-line"></i> <a href="/indicadores">Indicadores</a></li><hr>
                 <li class="list-group-item"><i class="fas fa-sync-alt"></i> <a href="#">Sincronização</a></li>
                 <li class="list-group-item"><i class="fas fa-cogs"></i> <a href="#">Configurações</a></li>
-                <li class="list-group-item"><i class="fas fa-question-circle"></i> <a href="#">Ajuda</a></li>
-                <li class="list-group-item"><i class="fas fa-sign-out-alt"></i> <a href="#" id="logout">Sair</a></li>
+                <li class="list-group-item"><i class="fas fa-question-circle"></i> <a href="#">Ajuda</a></li><hr>
+                <li class="list-group-item"><i class="fas fa-sign-out-alt"></i> <a href="/login" id="logout">Sair</a></li>
             </ul>
             
         </div>
@@ -55,6 +55,7 @@
 
     <script src="/assets/js/navigation.js"></script>
     <script src="/assets/js/dashboard.js"></script>
+    <script src="/assets/js/logout.js"></script> 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetch('/empresas')
