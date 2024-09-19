@@ -1,3 +1,6 @@
+// Certifique-se de que o Axios está incluído no seu projeto
+// Você pode incluir via CDN no seu HTML:
+
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evita o envio do formulário padrão
 
@@ -5,40 +8,33 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password })
-        });
+        const response = await axios.post('/login', { username, password });
 
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('token', data.token); // Armazena o token no localStorage
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token); // Armazena o token no localStorage
             window.location.href = '/dashboard'; // Redireciona para o dashboard
-        } else {
-            const error = await response.json();
-            alert(error.message); // Mostra mensagem de erro
         }
     } catch (error) {
-        console.error('Erro ao enviar o login:', error);
+        if (error.response) {
+            // O servidor respondeu com um código de status fora do intervalo de 2xx
+            alert(error.response.data.message); // Mostra mensagem de erro
+        } else {
+            console.error('Erro ao enviar o login:', error);
+        }
     }
 });
 
-// Exemplo de fetch para endpoint protegido
+// Função para carregar empresas usando Axios
 async function loadEmpresas() {
     try {
-        const response = await fetch('/empresas', {
-            method: 'GET',
+        const response = await axios.get('/empresas', {
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}` // Incluindo o token
             }
         });
 
-        if (response.ok) {
-            const empresas = await response.json();
+        if (response.status === 200) {
+            const empresas = response.data;
             const select = document.getElementById('empresaSelect');
             empresas.forEach(empresa => {
                 const option = document.createElement('option');
@@ -46,10 +42,10 @@ async function loadEmpresas() {
                 option.textContent = empresa.nome;
                 select.appendChild(option);
             });
-        } else {
-            console.error('Erro ao carregar empresas:', await response.json());
         }
     } catch (error) {
-        console.error('Erro ao carregar empresas:', error);
+        console.error('Erro ao carregar empresas:', error.response ? error.response.data : error);
     }
 }
+
+// Chame loadEmpresas quando necessário

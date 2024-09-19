@@ -5,6 +5,8 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
+require('dotenv').config();
+
 
 
 const app = express();
@@ -42,16 +44,16 @@ app.use((req, res, next) => {
 
 // Servir arquivos estáticos (CSS, JS, imagens)
 app.use(express.static(path.join(__dirname, 'public')));
+console.log('Token JWT carregado:', process.env.JWT_SECRET);
 
-// Chave secreta para JWT
-const JWT_SECRET = 'goldenpass';
 
-const authenticateJWT = (req, res, next) => {
+
+const autenticar = (req, res, next) => {
     const token = req.headers['authorization'] && req.headers['authorization'].split(' ')[1];
 
     if (token) {
         console.log('Token recebido:', token); // Log do token recebido
-        jwt.verify(token, JWT_SECRET, (err, user) => {
+        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
             if (err) {
                 console.error('Erro ao verificar o token:', err); // Log do erro
                 return res.sendStatus(403);
@@ -100,6 +102,10 @@ app.get('/rascunhos', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/pages', 'rascunhos.html'));
 });
 
+app.get('/relatorios', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/pages', 'relatorios.html'));
+});
+
 app.get('/clientes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/pages', 'clientes.html'));
 });
@@ -135,7 +141,7 @@ app.post('/login', (req, res) => {
         if (result.length > 0) {
             const user = result[0];
             if (bcrypt.compareSync(password, user.senha)) {
-                const token = jwt.sign({ id: user.id, nome: user.nome }, JWT_SECRET, { expiresIn: '1h' });
+                const token = jwt.sign({ id: user.id, nome: user.nome }, process.env.JWT_SECRET, { expiresIn: '1h' });
                 console.log('Token gerado:', token);
                 res.status(200).send({ token });
             } else {
@@ -176,7 +182,7 @@ app.post('/register', (req, res) => {
 
 
 // Rota para registro de empresa
-app.post('/register-company', authenticateJWT, (req, res) => {
+app.post('/register-company', (req, res) => {
     const { cnpj, nome } = req.body;
     const userId = req.user.id;
 
@@ -203,18 +209,18 @@ app.post('/register-company', authenticateJWT, (req, res) => {
 });
 
 // Rota para listar empresas do usuário
-app.get('/empresas',  (req, res) => {
-    const userId = req.user.id;
+// app.get('/empresas',  (req, res) => {
+//     const userId = req.user.id;
 
-    const query = 'SELECT * FROM empresas WHERE usuario_id = ?';
-    db.query(query, [userId], (err, result) => {
-        if (err) {
-            res.status(500).send('Erro ao buscar empresas');
-            return;
-        }
-        res.status(200).json(result);
-    });
-});
+//     const query = 'SELECT * FROM empresas WHERE usuario_id = ?';
+//     db.query(query, [userId], (err, result) => {
+//         if (err) {
+//             res.status(500).send('Erro ao buscar empresas');
+//             return;
+//         }
+//         res.status(200).json(result);
+//     });
+// });
 
 // Iniciar o servidor
 app.listen(3000, () => {
