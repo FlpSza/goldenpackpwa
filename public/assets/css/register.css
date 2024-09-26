@@ -6,8 +6,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    flex-direction: column; /* Alinha os itens verticalmente */
-
 }
 
 .login-container {
@@ -32,7 +30,7 @@ label {
 }
 
 input {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -54,21 +52,21 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 10px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-.logoContainer {
-    margin-bottom: 20px; /* Espaçamento abaixo da logo */
-    text-align: center; /* Centraliza a logo horizontalmente */
+p {
+    margin-top: 15px;
 }
 
-.logo {
-    display: block;
-    margin: 0 auto 20px; /* Centraliza a logo e adiciona espaçamento abaixo */
-    max-width: 60%; /* Mantém a logo responsiva */
-    height: auto; /* Mantém a proporção da imagem */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

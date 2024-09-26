@@ -8,21 +8,32 @@
     <link rel="manifest" href="/manifest.json">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta name="theme-color" content="#000000">
-    
 </head>
 <body>
-    <h1>Login</h1>
-    <form id="loginForm">
-        <label for="username">Nome de Usuário:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="submit">Entrar</button>
-    </form>
+    <div class="logoContainer">
+        <img src="/assets/images/logo.png" alt="Logo" class="logo"> <!-- Adicione a logo aqui -->
+    </div>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Nome de Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Entrar</button>
+            <button type="button" id="registerButton">Registrar</button>
+        </form>
+    </div>
     
     <script src="/assets/js/navigation.js"></script>
     <script src="/assets/js/login.js"></script>
+    <script>
+        //DOM para o botão register
+        document.getElementById('registerButton').addEventListener('click', function() {
+            window.location.href = '/register'; // Redireciona para a rota de registro
+        });
+    </script>
 </body>
 </html>

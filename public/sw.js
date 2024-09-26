@@ -19,7 +19,8 @@ const urlsToCache = [
     '/assets/js/produtos.js',
     '/assets/js/rascunhos.js',
     '/assets/js/relatorios.js',
-    '/assets/icons/icon-192x192.png',
+    '/assets/icons/icon-192.png',
+    '/assets/icons/logo.png',
     '/assets/icons/icon-512x512.png'
 ];
 
