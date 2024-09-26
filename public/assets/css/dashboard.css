@@ -45,6 +45,12 @@ footer {
     color: black;
 }
 
+.sidebar-heading h5 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333; /* Altere conforme necessário */
+}
+
 /* Contêiner do menu e botão */
 #wrapper {
     display: flex;
